@@ -1,0 +1,5 @@
+{
+    "files.autoSave": "afterDelay",
+    "composer.enabled": true,
+    "composer.executablePath": "C:\\ProgramData\\ComposerSetup\\bin\\composer.bat"
+}

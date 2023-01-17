@@ -1,0 +1,23 @@
+Options +FollowSymLinks
+
+IndexIgnore */*
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !^/(blog/web)
+
+RewriteRule ^assets/(.*)$ /blog/web/assets/$1 [L]
+
+RewriteRule ^css/(.*)$ /blog/web/css/$1 [L]
+
+RewriteRule ^js/(.*)$ /blog/web/js/$1 [L]
+
+RewriteRule ^img/(.*)$ /blog/web/img/$1 [L]
+
+RewriteRule (.*) /blog/web/$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . /blog/web/index.php
