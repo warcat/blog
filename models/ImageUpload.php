@@ -21,7 +21,6 @@ class ImageUpload extends Model
 
     public function uploadFile(UploadedFile $file, $currentImage)
     {
-        $basePath = 'C:\\xampp\\htdocs\\blog\\web\\uploads\\';
         $this->image = $file;
 
         if ($this->validate()) {
@@ -29,18 +28,22 @@ class ImageUpload extends Model
 
             $filename = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
 
-            $file->saveAs($basePath . $filename);
-            //$file->saveAs(Yii::getAlias('@web') . '/web/uploads/' . $file->name);
+            $file->saveAs($this->getBasePath() . $filename);
+
             return $filename;
         }
     }
 
     public function deleteCurrentImage($currentImage)
     {
-        $basePath = 'C:\\xampp\\htdocs\\blog\\web\\uploads\\';
-        if (file_exists($basePath . $currentImage) && is_file($basePath . $currentImage)) 
+        if (file_exists($this->getBasePath() . $currentImage) && is_file($this->getBasePath() . $currentImage)) 
         {
-            unlink($basePath . $currentImage);
+            unlink($this->getBasePath() . $currentImage);
         }
+    }
+
+    private function getBasePath()
+    {
+        return 'C:\\xampp\\htdocs\\blog\\web\\uploads\\';
     }
 }
