@@ -44,6 +44,6 @@ class ImageUpload extends Model
 
     private function getBasePath()
     {
-        return 'C:\\xampp\\htdocs\\blog\\web\\uploads\\';
+        return  'uploads\\';
     }
 }
