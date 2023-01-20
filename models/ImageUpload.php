@@ -30,7 +30,6 @@ class ImageUpload extends Model
             $filename = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
 
             $file->saveAs($basePath . $filename);
-            // TODO: fix this later
             //$file->saveAs(Yii::getAlias('@web') . '/web/uploads/' . $file->name);
             return $filename;
         }
